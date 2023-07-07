@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Employee Form</title>
+  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+<h2>Employee Form</h2>
+<script src="/js/script.js"></script>
+<button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+
+<form th:object="${employee}" th:action="${employee.id != null ? '/employee/update/' + employee.id : '/employee/new'}" method="post">
+  <input type="hidden" th:field="*{id}">
+  <div>
+    <label>First Name:</label>
+    <input type="text" th:field="*{firstName}">
+  </div>
+  <div>
+    <label>Last Name:</label>
+    <input type="text" th:field="*{lastName}">
+  </div>
+  <div>
+    <label>Designation:</label>
+    <input type="text" th:field="*{designation}">
+  </div>
+  <div>
+    <button type="submit">Save</button>
+    <a href="/">Cancel</a>
+  </div>
+</form>
+</body>
+</html>

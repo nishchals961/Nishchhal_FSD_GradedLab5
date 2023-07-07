@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee List</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+<script src="/js/script.js"></script>
+<button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+
+<h2>Employee List</h2>
+
+<a href="/employee/new">Add New Employee</a>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Designation</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="employee : ${employees}">
+        <td th:text="${employee.id}"></td>
+        <td th:text="${employee.firstName}"></td>
+        <td th:text="${employee.lastName}"></td>
+        <td th:text="${employee.designation}"></td>
+        <td>
+            <a th:href="@{/employee/edit/{id}(id=${employee.id})}">Edit</a>
+            <a th:href="@{/employee/delete/{id}(id=${employee.id})}">Delete</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
